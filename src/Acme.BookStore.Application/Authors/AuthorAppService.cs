@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
+using Volo.Abp.Data;
 
 namespace Acme.BookStore.Authors
 {
@@ -66,7 +67,8 @@ namespace Acme.BookStore.Authors
                 input.BirthDate,
                 input.ShortBio
             );
-
+            author.SetProperty("Title", "My Title")
+    .SetProperty("IsSuperUser", true);
             await _authorRepository.InsertAsync(author);
 
             return ObjectMapper.Map<Author, AuthorDto>(author);

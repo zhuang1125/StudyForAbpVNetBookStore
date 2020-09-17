@@ -13,6 +13,7 @@ using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.PermissionManagement.IdentityServer;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
+using EasyAbp.PrivateMessaging;
 
 namespace Acme.BookStore
 {
@@ -27,7 +28,9 @@ namespace Acme.BookStore
         typeof(AbpPermissionManagementDomainIdentityServerModule),
         typeof(AbpSettingManagementDomainModule),
         typeof(AbpTenantManagementDomainModule),
-        typeof(AbpEmailingModule)
+        typeof(AbpEmailingModule),
+
+        typeof(PrivateMessagingDomainModule)
     )]
     public class BookStoreDomainModule : AbpModule
     {

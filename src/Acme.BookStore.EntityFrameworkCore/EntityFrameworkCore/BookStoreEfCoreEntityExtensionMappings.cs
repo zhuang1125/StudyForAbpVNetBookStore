@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using Volo.Abp.Identity;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Threading;
@@ -39,6 +40,57 @@ namespace Acme.BookStore.EntityFrameworkCore
                  * See the documentation for more:
                  * https://docs.abp.io/en/abp/latest/Customizing-Application-Modules-Extending-Entities
                  */
+
+
+                //ObjectExtensionManager.Instance
+                //.AddOrUpdateProperty<IdentityUser, string>(
+                //"SocialSecurityNumber",
+                //options =>
+                //{
+                //    options.MapEfCore(b => b.HasMaxLength(32));
+                //}
+                //);
+
+
+                //ObjectExtensionManager.Instance
+                //.AddOrUpdate<IdentityUser>(options =>
+                //{
+                //    options.AddOrUpdateProperty<string>("SocialSecurityNumber");
+                //    options.AddOrUpdateProperty<bool>("IsSuperUser");
+                //}
+                //);
+
+                //ObjectExtensionManager.Instance
+                //.AddOrUpdate<IdentityUserCreateDto>(objConfig =>
+                //{
+                //    //Define two properties with their own validation rules
+
+                //    objConfig.AddOrUpdateProperty<string>("Password", propertyConfig =>
+                //    {
+                //        propertyConfig.Attributes.Add(new RequiredAttribute());
+                //    });
+
+                //    objConfig.AddOrUpdateProperty<string>("PasswordRepeat", propertyConfig =>
+                //    {
+                //        propertyConfig.Attributes.Add(new RequiredAttribute());
+                //    });
+
+                //    //Write a common validation logic works on multiple properties
+
+                //    objConfig.Validators.Add(context =>
+                //    {
+                //        if (context.ValidatingObject.GetProperty<string>("Password") !=
+                //            context.ValidatingObject.GetProperty<string>("PasswordRepeat"))
+                //        {
+                //            context.ValidationErrors.Add(
+                //                new ValidationResult(
+                //                    "Please repeat the same password!",
+                //                    new[] { "Password", "PasswordRepeat" }
+                //                )
+                //            );
+                //        }
+                //    });
+                //});
             });
         }
     }

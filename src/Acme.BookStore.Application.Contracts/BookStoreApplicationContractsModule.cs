@@ -1,4 +1,5 @@
-﻿using Volo.Abp.Account;
+﻿using EasyAbp.PrivateMessaging;
+using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
@@ -15,7 +16,10 @@ namespace Acme.BookStore
         typeof(AbpIdentityApplicationContractsModule),
         typeof(AbpPermissionManagementApplicationContractsModule),
         typeof(AbpTenantManagementApplicationContractsModule),
-        typeof(AbpObjectExtendingModule)
+        typeof(AbpObjectExtendingModule),
+        
+        typeof(PrivateMessagingDomainSharedModule)
+
     )]
     public class BookStoreApplicationContractsModule : AbpModule
     {

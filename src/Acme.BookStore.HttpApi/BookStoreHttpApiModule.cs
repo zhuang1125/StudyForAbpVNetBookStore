@@ -7,6 +7,7 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.TenantManagement;
+using EasyAbp.PrivateMessaging;
 
 namespace Acme.BookStore
 {
@@ -16,7 +17,10 @@ namespace Acme.BookStore
         typeof(AbpIdentityHttpApiModule),
         typeof(AbpPermissionManagementHttpApiModule),
         typeof(AbpTenantManagementHttpApiModule),
-        typeof(AbpFeatureManagementHttpApiModule)
+        typeof(AbpFeatureManagementHttpApiModule),
+
+        typeof(PrivateMessagingApplicationContractsModule)
+
         )]
     public class BookStoreHttpApiModule : AbpModule
     {

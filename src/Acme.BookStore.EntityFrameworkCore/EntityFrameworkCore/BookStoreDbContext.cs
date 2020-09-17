@@ -7,6 +7,7 @@ using Volo.Abp.Identity;
 using Volo.Abp.Users.EntityFrameworkCore;
 using Acme.BookStore.Books;
 using Acme.BookStore.Authors;
+using EasyAbp.PrivateMessaging.EntityFrameworkCore;
 
 namespace Acme.BookStore.EntityFrameworkCore
 {
@@ -59,6 +60,8 @@ namespace Acme.BookStore.EntityFrameworkCore
             /* Configure your own tables/entities inside the ConfigureBookStore method */
 
             builder.ConfigureBookStore();
+
+            builder.ConfigurePrivateMessaging();
         }
     }
 }

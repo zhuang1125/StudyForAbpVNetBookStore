@@ -38,6 +38,11 @@ using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Acme.BookStore.Permissions;
+using Lsw.Abp.AspNetCore.Mvc.UI.Theme.Stisla;
+using EasyAbp.Abp.AspNetCore.Mvc.UI.Theme.LYear;
+using EasyAbp.PrivateMessaging.Web;
+using EasyAbp.PrivateMessaging;
+using EasyAbp.PrivateMessaging.EntityFrameworkCore;
 
 namespace Acme.BookStore.Web
 {
@@ -48,7 +53,22 @@ namespace Acme.BookStore.Web
         typeof(AbpAutofacModule),
         typeof(AbpIdentityWebModule),
         typeof(AbpAccountWebIdentityServerModule),
-        typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+
+
+        // typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+        // typeof(AbpAspNetCoreMvcUiLYearThemeModule),
+        typeof(AbpAspNetCoreMvcUiStislaThemeModule),
+
+
+
+        typeof(PrivateMessagingWebModule),
+        typeof(PrivateMessagingHttpApiModule),
+        typeof(PrivateMessagingApplicationModule),
+          typeof(PrivateMessagingEntityFrameworkCoreModule),
+
+
+      
+       // typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpTenantManagementWebModule),
         typeof(AbpAspNetCoreSerilogModule)

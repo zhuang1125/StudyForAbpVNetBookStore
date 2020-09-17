@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Acme.BookStore.Books;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Form;
-
+using Volo.Abp.Data;
 
 namespace Acme.BookStore.Web.Pages.Books
 {
@@ -30,7 +31,6 @@ namespace Acme.BookStore.Web.Pages.Books
         public async Task OnGetAsync()
         {
             Book = new CreateBookViewModel();
-
             var authorLookup = await _bookAppService.GetAuthorLookupAsync();
             Authors = authorLookup.Items
                 .Select(x => new SelectListItem(x.Name, x.Id.ToString()))
@@ -39,10 +39,21 @@ namespace Acme.BookStore.Web.Pages.Books
 
         public async Task<IActionResult> OnPostAsync()
         {
+            try
+            {
+
+          
+            var dd = ObjectMapper.Map<CreateBookViewModel, CreateUpdateBookDto>(Book);
             await _bookAppService.CreateAsync(
-                ObjectMapper.Map<CreateBookViewModel, CreateUpdateBookDto>(Book)
+               dd
                 );
             return NoContent();
+            }
+            catch (Exception ee)
+            {
+
+                throw;
+            }
         }
 
         public class CreateBookViewModel
@@ -64,6 +75,8 @@ namespace Acme.BookStore.Web.Pages.Books
 
             [Required]
             public float Price { get; set; }
+            
+           
         }
     }
 }

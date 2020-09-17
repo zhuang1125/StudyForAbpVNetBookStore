@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Volo.Abp.Data;
 
 namespace Acme.BookStore.Books
 {
-    public class CreateUpdateBookDto
+    public class CreateUpdateBookDto: IHasExtraProperties
     {
         [Required]
         [StringLength(128)]
@@ -20,5 +22,7 @@ namespace Acme.BookStore.Books
         public float Price { get; set; }
 
         public Guid AuthorId { get; set; }
+
+        public Dictionary<string, object> ExtraProperties { get; set; } = new Dictionary<string, object>();
     }
 }

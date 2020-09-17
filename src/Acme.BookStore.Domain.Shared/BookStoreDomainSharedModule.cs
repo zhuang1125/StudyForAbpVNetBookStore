@@ -1,4 +1,5 @@
 ﻿using Acme.BookStore.Localization;
+using EasyAbp.PrivateMessaging;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
@@ -23,7 +24,10 @@ namespace Acme.BookStore
         typeof(AbpIdentityServerDomainSharedModule),
         typeof(AbpPermissionManagementDomainSharedModule),
         typeof(AbpSettingManagementDomainSharedModule),
-        typeof(AbpTenantManagementDomainSharedModule)
+        typeof(AbpTenantManagementDomainSharedModule),
+
+        typeof(PrivateMessagingDomainSharedModule)
+
         )]
     public class BookStoreDomainSharedModule : AbpModule
     {
