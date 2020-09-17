@@ -23,6 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Pages\PrivateMessaging\Components\PmNotification\Default.cshtml" />
+    <None Include="Themes\Stisla\Components\Brand\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Pages\**\*.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
