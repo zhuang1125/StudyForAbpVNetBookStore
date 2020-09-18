@@ -159,7 +159,7 @@ options.FileSets.ReplaceEmbeddedByPhysical<BookStoreDomainSharedModule>(Path.Com
                     options.FileSets.ReplaceEmbeddedByPhysical<BookStoreApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Acme.BookStore.Application"));
                     options.FileSets.ReplaceEmbeddedByPhysical<BookStoreWebModule>(hostingEnvironment.ContentRootPath);
 
-                //    options.FileSets.ReplaceEmbeddedByPhysical<SettingUiWebModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{sept}..{sept}..{sept}..{sept}src{sept}EasyAbp.Abp.SettingUi.Web"));
+
                 });
             }
         }
