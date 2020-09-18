@@ -1,4 +1,5 @@
-﻿using EasyAbp.PrivateMessaging;
+﻿
+using EasyAbp.PrivateMessaging;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;

@@ -20,6 +20,9 @@ namespace Acme.BookStore
         
         typeof(PrivateMessagingDomainSharedModule)
 
+       
+       
+
     )]
     public class BookStoreApplicationContractsModule : AbpModule
     {

@@ -43,6 +43,8 @@ using EasyAbp.Abp.AspNetCore.Mvc.UI.Theme.LYear;
 using EasyAbp.PrivateMessaging.Web;
 using EasyAbp.PrivateMessaging;
 using EasyAbp.PrivateMessaging.EntityFrameworkCore;
+using EasyAbp.Abp.SettingUi;
+using EasyAbp.Abp.SettingUi.Web;
 
 namespace Acme.BookStore.Web
 {
@@ -71,7 +73,12 @@ namespace Acme.BookStore.Web
        // typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpTenantManagementWebModule),
-        typeof(AbpAspNetCoreSerilogModule)
+        typeof(AbpAspNetCoreSerilogModule),
+
+
+
+          typeof(SettingUiWebModule)
+
         )]
     public class BookStoreWebModule : AbpModule
     {
@@ -145,11 +152,14 @@ namespace Acme.BookStore.Web
             {
                 Configure<AbpVirtualFileSystemOptions>(options =>
                 {
-                    options.FileSets.ReplaceEmbeddedByPhysical<BookStoreDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Acme.BookStore.Domain.Shared"));
+                    char sept = Path.DirectorySeparatorChar; 
+options.FileSets.ReplaceEmbeddedByPhysical<BookStoreDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Acme.BookStore.Domain.Shared"));
                     options.FileSets.ReplaceEmbeddedByPhysical<BookStoreDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Acme.BookStore.Domain"));
                     options.FileSets.ReplaceEmbeddedByPhysical<BookStoreApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Acme.BookStore.Application.Contracts"));
                     options.FileSets.ReplaceEmbeddedByPhysical<BookStoreApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Acme.BookStore.Application"));
                     options.FileSets.ReplaceEmbeddedByPhysical<BookStoreWebModule>(hostingEnvironment.ContentRootPath);
+
+                //    options.FileSets.ReplaceEmbeddedByPhysical<SettingUiWebModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{sept}..{sept}..{sept}..{sept}src{sept}EasyAbp.Abp.SettingUi.Web"));
                 });
             }
         }

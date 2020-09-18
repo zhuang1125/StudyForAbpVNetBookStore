@@ -1,4 +1,6 @@
 ﻿using Acme.BookStore.Localization;
+using EasyAbp.Abp.SettingUi;
+using EasyAbp.Abp.SettingUi.Localization;
 using EasyAbp.PrivateMessaging;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
@@ -26,7 +28,9 @@ namespace Acme.BookStore
         typeof(AbpSettingManagementDomainSharedModule),
         typeof(AbpTenantManagementDomainSharedModule),
 
-        typeof(PrivateMessagingDomainSharedModule)
+        typeof(PrivateMessagingDomainSharedModule),
+
+        typeof(SettingUiDomainSharedModule)
 
         )]
     public class BookStoreDomainSharedModule : AbpModule
@@ -39,6 +43,8 @@ namespace Acme.BookStore
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+
+
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
                 options.FileSets.AddEmbedded<BookStoreDomainSharedModule>();
@@ -51,7 +57,13 @@ namespace Acme.BookStore
                     .AddBaseTypes(typeof(AbpValidationResource))
                     .AddVirtualJson("/Localization/BookStore");
 
+                options.Resources
+     .Get<SettingUiResource>()
+     .AddVirtualJson("/Localization/BookStore");
+
                 options.DefaultResourceType = typeof(BookStoreResource);
+
+              
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>

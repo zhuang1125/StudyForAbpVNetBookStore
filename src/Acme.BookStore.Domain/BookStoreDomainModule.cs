@@ -31,6 +31,7 @@ namespace Acme.BookStore
         typeof(AbpEmailingModule),
 
         typeof(PrivateMessagingDomainModule)
+
     )]
     public class BookStoreDomainModule : AbpModule
     {

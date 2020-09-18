@@ -29,6 +29,7 @@ namespace Acme.BookStore.EntityFrameworkCore
 
         typeof(PrivateMessagingEntityFrameworkCoreModule)
 
+
         )]
     public class BookStoreEntityFrameworkCoreModule : AbpModule
     {
