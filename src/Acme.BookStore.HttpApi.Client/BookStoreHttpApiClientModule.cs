@@ -1,4 +1,5 @@
 ﻿
+using EasyAbp.FileManagement;
 using EasyAbp.PrivateMessaging;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Account;
@@ -18,7 +19,11 @@ namespace Acme.BookStore
         typeof(AbpTenantManagementHttpApiClientModule),
         typeof(AbpFeatureManagementHttpApiClientModule),
 
-        typeof(PrivateMessagingApplicationContractsModule)
+        typeof(PrivateMessagingApplicationContractsModule),
+
+        typeof(FileManagementApplicationContractsModule),
+
+        typeof(FileManagementHttpApiClientModule)
     )]
     public class BookStoreHttpApiClientModule : AbpModule
     {

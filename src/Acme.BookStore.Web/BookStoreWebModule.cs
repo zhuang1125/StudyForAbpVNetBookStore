@@ -45,6 +45,61 @@ using EasyAbp.PrivateMessaging;
 using EasyAbp.PrivateMessaging.EntityFrameworkCore;
 using EasyAbp.Abp.SettingUi;
 using EasyAbp.Abp.SettingUi.Web;
+using EasyAbp.FileManagement;
+using EasyAbp.FileManagement.Web;
+using Volo.Abp.BlobStoring;
+using EasyAbp.FileManagement.Options;
+using EasyAbp.FileManagement.Files;
+using EasyAbp.FileManagement.Containers;
+using Volo.Abp.BlobStoring.FileSystem;
+using EasyAbp.FileManagement.EntityFrameworkCore;
+
+
+
+
+
+
+
+//using System.IO;
+//using EasyAbp.FileManagement.Containers;
+//using Microsoft.AspNetCore.Builder;
+//using Microsoft.Extensions.DependencyInjection;
+//using Microsoft.Extensions.Hosting;
+//using EasyAbp.FileManagement.EntityFrameworkCore;
+//using EasyAbp.FileManagement.Files;
+//using EasyAbp.FileManagement.MultiTenancy;
+//using EasyAbp.FileManagement.Options;
+//using EasyAbp.FileManagement.Web;
+//using Microsoft.OpenApi.Models;
+//using Volo.Abp;
+//using Volo.Abp.Account;
+//using Volo.Abp.Account.Web;
+//using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
+//using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
+//using Volo.Abp.AspNetCore.Serilog;
+//using Volo.Abp.AuditLogging.EntityFrameworkCore;
+//using Volo.Abp.Autofac;
+//using Volo.Abp.BlobStoring;
+//using Volo.Abp.BlobStoring.FileSystem;
+//using Volo.Abp.Data;
+//using Volo.Abp.EntityFrameworkCore;
+//using Volo.Abp.EntityFrameworkCore.SqlServer;
+//using Volo.Abp.FeatureManagement;
+//using Volo.Abp.Identity;
+//using Volo.Abp.Identity.EntityFrameworkCore;
+//using Volo.Abp.Identity.Web;
+//using Volo.Abp.Localization;
+//using Volo.Abp.Modularity;
+//using Volo.Abp.MultiTenancy;
+//using Volo.Abp.PermissionManagement;
+//using Volo.Abp.PermissionManagement.EntityFrameworkCore;
+//using Volo.Abp.PermissionManagement.Identity;
+//using Volo.Abp.SettingManagement.EntityFrameworkCore;
+//using Volo.Abp.TenantManagement;
+//using Volo.Abp.TenantManagement.EntityFrameworkCore;
+//using Volo.Abp.TenantManagement.Web;
+//using Volo.Abp.Threading;
+//using Volo.Abp.VirtualFileSystem;
 
 namespace Acme.BookStore.Web
 {
@@ -77,7 +132,14 @@ namespace Acme.BookStore.Web
 
 
 
-          typeof(SettingUiWebModule)
+          typeof(SettingUiWebModule),
+
+        typeof(FileManagementHttpApiModule),
+        typeof(FileManagementApplicationModule),
+          typeof(FileManagementEntityFrameworkCoreModule),
+          typeof(FileManagementWebModule),
+
+         typeof(AbpBlobStoringFileSystemModule)
 
         )]
     public class BookStoreWebModule : AbpModule
@@ -116,6 +178,46 @@ namespace Acme.BookStore.Web
                 options.Conventions.AuthorizePage("/Books/CreateModal", BookStorePermissions.Books.Create);
                 options.Conventions.AuthorizePage("/Books/EditModal", BookStorePermissions.Books.Edit);
             });
+
+            Configure<AbpBlobStoringOptions>(options =>
+            {
+                options.Containers.Configure<LocalFileSystemBlobContainer>(container =>
+                {
+                    container.IsMultiTenant = true;
+                    container.UseFileSystem(fileSystem =>
+                    {
+                        // fileSystem.BasePath = "C:\\my-files";
+                        fileSystem.BasePath = Path.Combine(hostingEnvironment.ContentRootPath, "my-files");
+                    });
+                });
+            });
+
+            Configure<FileManagementOptions>(options =>
+            {
+                options.DefaultFileDownloadProviderType = typeof(LocalFileDownloadProvider);
+                options.Containers.Configure<CommonFileContainer>(container =>
+                {
+                    // private container never be used by non-owner users (except user who has the "File.Manage" permission).
+                    container.FileContainerType = FileContainerType.Public;
+                    container.AbpBlobContainerName = BlobContainerNameAttribute.GetContainerName<LocalFileSystemBlobContainer>();
+                    container.AbpBlobDirectorySeparator = "/";
+
+                    container.RetainUnusedBlobs = false;
+                    container.EnableAutoRename = true;
+
+                    container.MaxByteSizeForEachFile = 5 * 1024 * 1024;
+                    container.MaxByteSizeForEachUpload = 10 * 1024 * 1024;
+                    container.MaxFileQuantityForEachUpload = 2;
+
+                    container.AllowOnlyConfiguredFileExtensions = true;
+                    container.FileExtensionsConfiguration.Add(".jpg", true);
+                    container.FileExtensionsConfiguration.Add(".png", true);
+                    // container.FileExtensionsConfiguration.Add(".exe", false);
+
+                    container.GetDownloadInfoTimesLimitEachUserPerMinute = 10;
+                });
+            });
+
         }
 
         private void ConfigureUrls(IConfiguration configuration)

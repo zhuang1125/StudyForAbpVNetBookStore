@@ -1,4 +1,5 @@
-﻿using EasyAbp.PrivateMessaging.EntityFrameworkCore;
+﻿using EasyAbp.FileManagement.EntityFrameworkCore;
+using EasyAbp.PrivateMessaging.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -46,6 +47,8 @@ namespace Acme.BookStore.EntityFrameworkCore
             builder.ConfigureBookStore();
 
             builder.ConfigurePrivateMessaging();
+
+            builder.ConfigureFileManagement();
         }
     }
 }

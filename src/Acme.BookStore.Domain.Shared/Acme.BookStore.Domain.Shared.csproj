@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="EasyAbp.Abp.SettingUi.Domain.Shared" Version="1.1.10" />
+    <PackageReference Include="EasyAbp.FileManagement.Domain.Shared" Version="0.8.0" />
     <PackageReference Include="EasyAbp.PrivateMessaging.Domain.Shared" Version="0.4.3" />
     <PackageReference Include="Volo.Abp.Identity.Domain.Shared" Version="3.1.2" />
     <PackageReference Include="Volo.Abp.IdentityServer.Domain.Shared" Version="3.1.2" />

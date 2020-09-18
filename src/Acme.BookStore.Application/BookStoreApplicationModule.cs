@@ -1,4 +1,5 @@
 ﻿using EasyAbp.Abp.SettingUi;
+using EasyAbp.FileManagement;
 using EasyAbp.PrivateMessaging;
 using Volo.Abp.Account;
 using Volo.Abp.AutoMapper;
@@ -23,7 +24,11 @@ namespace Acme.BookStore
           typeof(PrivateMessagingApplicationContractsModule),
           typeof(PrivateMessagingApplicationModule),
 
-          typeof(SettingUiApplicationModule)
+          typeof(SettingUiApplicationModule),
+
+        typeof(FileManagementApplicationModule), 
+        typeof(FileManagementApplicationContractsModule),
+          typeof(FileManagementDomainModule)
 
         )]
     public class BookStoreApplicationModule : AbpModule

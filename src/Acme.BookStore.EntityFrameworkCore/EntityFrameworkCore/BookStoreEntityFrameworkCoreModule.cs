@@ -1,4 +1,5 @@
-﻿using EasyAbp.PrivateMessaging;
+﻿using EasyAbp.FileManagement.EntityFrameworkCore;
+using EasyAbp.PrivateMessaging;
 using EasyAbp.PrivateMessaging.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -27,8 +28,9 @@ namespace Acme.BookStore.EntityFrameworkCore
         typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpFeatureManagementEntityFrameworkCoreModule),
 
-        typeof(PrivateMessagingEntityFrameworkCoreModule)
+        typeof(PrivateMessagingEntityFrameworkCoreModule),
 
+        typeof(FileManagementEntityFrameworkCoreModule)
 
         )]
     public class BookStoreEntityFrameworkCoreModule : AbpModule

@@ -39,6 +39,7 @@
   <ItemGroup>
     <PackageReference Include="EasyAbp.Abp.AspNetCore.Mvc.UI.Theme.LYear" Version="1.0.1" />
     <PackageReference Include="EasyAbp.Abp.SettingUi.Web" Version="1.1.10" />
+    <PackageReference Include="EasyAbp.FileManagement.Web" Version="0.8.0" />
     <PackageReference Include="EasyAbp.PrivateMessaging.Web" Version="0.4.3" />
     <PackageReference Include="Lsw.Abp.AspNetCore.Mvc.UI.Theme.Stisla" Version="1.5.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
@@ -47,6 +48,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6" />
+    <PackageReference Include="Volo.Abp.BlobStoring.FileSystem" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +63,10 @@
     <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="3.1.2" />
     <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="3.1.2" />
     <PackageReference Include="Volo.Abp.FeatureManagement.Web" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="my-files\" />
   </ItemGroup>
 
 </Project>
