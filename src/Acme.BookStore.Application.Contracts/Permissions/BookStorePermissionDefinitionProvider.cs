@@ -22,17 +22,15 @@ namespace Acme.BookStore.Permissions
             booksPermission.AddChild(BookStorePermissions.Books.Delete, L("Permission:Books.Delete"));
 
 
-            var authorsPermission = bookStoreGroup.AddPermission(
-    BookStorePermissions.Authors.Default, L("Permission:Authors"));
+            var authorsPermission = bookStoreGroup.AddPermission(BookStorePermissions.Authors.Default, L("Permission:Authors"));
+            authorsPermission.AddChild(BookStorePermissions.Authors.Create, L("Permission:Authors.Create"));
+            authorsPermission.AddChild(BookStorePermissions.Authors.Edit, L("Permission:Authors.Edit"));
+            authorsPermission.AddChild(BookStorePermissions.Authors.Delete, L("Permission:Authors.Delete"));
 
-            authorsPermission.AddChild(
-                BookStorePermissions.Authors.Create, L("Permission:Authors.Create"));
-
-            authorsPermission.AddChild(
-                BookStorePermissions.Authors.Edit, L("Permission:Authors.Edit"));
-
-            authorsPermission.AddChild(
-                BookStorePermissions.Authors.Delete, L("Permission:Authors.Delete"));
+            var organizationUnitsPermission = bookStoreGroup.AddPermission(BookStorePermissions.OrganizationUnits.Default, L("Permission:OrganizationUnits"));
+            organizationUnitsPermission.AddChild(BookStorePermissions.OrganizationUnits.Create, L("Permission:OrganizationUnits.Create"));
+            organizationUnitsPermission.AddChild(BookStorePermissions.OrganizationUnits.Edit, L("Permission:OrganizationUnits.Edit"));
+            organizationUnitsPermission.AddChild(BookStorePermissions.OrganizationUnits.Delete, L("Permission:OrganizationUnits.Delete"));
         }
 
         private static LocalizableString L(string name)

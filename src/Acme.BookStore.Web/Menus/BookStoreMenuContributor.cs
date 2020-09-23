@@ -57,6 +57,16 @@ namespace Acme.BookStore.Web.Menus
                     url: "/Authors"
                 ));
             }
+
+
+            if (await context.IsGrantedAsync(BookStorePermissions.OrganizationUnits.Default))
+            {
+                bookStoreMenu.AddItem(new ApplicationMenuItem(
+                    "BooksStore.OrganizationUnits",
+                    l["Menu:OrganizationUnits"],
+                    url: "/OrganizationUnits"
+                ));
+            }
         }
     }
 }

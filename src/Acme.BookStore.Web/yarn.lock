@@ -390,6 +390,11 @@ bootstrap-datepicker@^1.9.0:
   dependencies:
     jquery ">=1.7.1 <4.0.0"
 
+bootstrap-table@^1.18.0:
+  version "1.18.0"
+  resolved "https://registry.npm.taobao.org/bootstrap-table/download/bootstrap-table-1.18.0.tgz#cd1c5d9fbc0232ebe1ea7b50befd61a464a36c6e"
+  integrity sha1-zRxdn7wCMuvh6ntQvv1hpGSjbG4=
+
 bootstrap-v4-rtl@4.4.1-2:
   version "4.4.1-2"
   resolved "https://registry.yarnpkg.com/bootstrap-v4-rtl/-/bootstrap-v4-rtl-4.4.1-2.tgz#93f2a5096f1a0a5462729a7b66a97a40972cc595"

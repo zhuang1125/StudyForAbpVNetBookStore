@@ -1,7 +1,6 @@
 ﻿$(function () {
     var l = abp.localization.getResource('BookStore');
-    var createModal = new abp.ModalManager(abp.appPath + 'Books/CreateModal');
-    var editModal = new abp.ModalManager(abp.appPath + 'Books/EditModal');
+   
 
     var dataTable = $('#BooksTable').DataTable(
         abp.libs.datatables.normalizeConfiguration({
@@ -87,9 +86,16 @@
         })
     );
 
+   // var createModal = new abp.ModalManager(abp.appPath + 'Books/CreateModal');
+   // var editModal = new abp.ModalManager(abp.appPath + 'Books/EditModal');
     var createModal = new abp.ModalManager(abp.appPath + 'Books/CreateModal');
 
     createModal.onResult(function () {
+        dataTable.ajax.reload();
+    });
+    var editModal = new abp.ModalManager(abp.appPath + 'Books/EditModal');
+
+    editModal.onResult(function () {
         dataTable.ajax.reload();
     });
 

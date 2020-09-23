@@ -1,0 +1,50 @@
+[
+    {
+      "tenantId": null,
+      "parentId": "513556e9-e402-a9b9-0082-39f7c6d47ca9",
+      "code": "00003.00001.00001",
+      "displayName": "计算机中心",
+      "lastModificationTime": null,
+      "lastModifierId": null,
+      "creationTime": "2020-09-22T15:15:01.545229",
+      "creatorId": "05382872-2209-6075-19dd-39f7b2488e2b",
+      "id": "c0004d92-99e6-6256-c5e6-39f7c6d7430a",
+      "extraProperties": {}
+    },
+    {
+      "tenantId": null,
+      "parentId": "105f3503-15bb-4050-d44c-39f7c6d40fbb",
+      "code": "00003.00002",
+      "displayName": "武汉格力电器",
+      "lastModificationTime": null,
+      "lastModifierId": null,
+      "creationTime": "2020-09-22T15:14:47.6858997",
+      "creatorId": "05382872-2209-6075-19dd-39f7b2488e2b",
+      "id": "21fa3c42-abd3-05f3-898b-39f7c6d70cca",
+      "extraProperties": {}
+    },
+    {
+      "tenantId": null,
+      "parentId": "105f3503-15bb-4050-d44c-39f7c6d40fbb",
+      "code": "00003.00001",
+      "displayName": "珠海格力电器",
+      "lastModificationTime": null,
+      "lastModifierId": null,
+      "creationTime": "2020-09-22T15:11:59.7064236",
+      "creatorId": "05382872-2209-6075-19dd-39f7b2488e2b",
+      "id": "513556e9-e402-a9b9-0082-39f7c6d47ca9",
+      "extraProperties": {}
+    },
+    {
+      "tenantId": null,
+      "parentId": null,
+      "code": "00003",
+      "displayName": "格力电器",
+      "lastModificationTime": null,
+      "lastModifierId": null,
+      "creationTime": "2020-09-22T15:11:31.8647871",
+      "creatorId": "05382872-2209-6075-19dd-39f7b2488e2b",
+      "id": "105f3503-15bb-4050-d44c-39f7c6d40fbb",
+      "extraProperties": {}
+    }
+  ]

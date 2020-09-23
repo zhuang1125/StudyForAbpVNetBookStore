@@ -53,6 +53,7 @@ using EasyAbp.FileManagement.Files;
 using EasyAbp.FileManagement.Containers;
 using Volo.Abp.BlobStoring.FileSystem;
 using EasyAbp.FileManagement.EntityFrameworkCore;
+using Volo.Abp.BlobStoring.Minio;
 
 
 
@@ -139,7 +140,7 @@ namespace Acme.BookStore.Web
           typeof(FileManagementEntityFrameworkCoreModule),
           typeof(FileManagementWebModule),
 
-         typeof(AbpBlobStoringFileSystemModule)
+         typeof(AbpBlobStoringMinioModule)
 
         )]
     public class BookStoreWebModule : AbpModule
@@ -179,27 +180,47 @@ namespace Acme.BookStore.Web
                 options.Conventions.AuthorizePage("/Books/EditModal", BookStorePermissions.Books.Edit);
             });
 
+            //Configure<AbpBlobStoringOptions>(options =>
+            //{
+            //    options.Containers.Configure<LocalFileSystemBlobContainer>(container =>
+            //    {
+            //        container.IsMultiTenant = true;
+            //        container.UseFileSystem(fileSystem =>
+            //        {
+            //            // fileSystem.BasePath = "C:\\my-files";
+            //            fileSystem.BasePath = Path.Combine(hostingEnvironment.ContentRootPath, "my-files");
+            //        });
+            //    });
+            //});
+
+
             Configure<AbpBlobStoringOptions>(options =>
             {
-                options.Containers.Configure<LocalFileSystemBlobContainer>(container =>
-                {
+                options.Containers.ConfigureDefault(container =>
+                {                    
                     container.IsMultiTenant = true;
-                    container.UseFileSystem(fileSystem =>
+                    container.UseMinio(minio =>
                     {
-                        // fileSystem.BasePath = "C:\\my-files";
-                        fileSystem.BasePath = Path.Combine(hostingEnvironment.ContentRootPath, "my-files");
-                    });
+                        minio.EndPoint = "192.168.3.14:9000";
+                        minio.AccessKey = "MinioAdmin";
+                        minio.SecretKey = "Mess31231";
+                        minio.BucketName = "BookStoreBK".ToLower();
+                        minio.CreateBucketIfNotExists = true;
+                        minio.WithSSL = false;
+                    }).GetMinioConfiguration();
+                    
                 });
             });
+
 
             Configure<FileManagementOptions>(options =>
             {
                 options.DefaultFileDownloadProviderType = typeof(LocalFileDownloadProvider);
                 options.Containers.Configure<CommonFileContainer>(container =>
-                {
+                {                   
                     // private container never be used by non-owner users (except user who has the "File.Manage" permission).
                     container.FileContainerType = FileContainerType.Public;
-                    container.AbpBlobContainerName = BlobContainerNameAttribute.GetContainerName<LocalFileSystemBlobContainer>();
+                    container.AbpBlobContainerName = "default";// BlobContainerNameAttribute.GetContainerName<LocalFileSystemBlobContainer>();
                     container.AbpBlobDirectorySeparator = "/";
 
                     container.RetainUnusedBlobs = false;

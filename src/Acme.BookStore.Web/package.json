@@ -3,6 +3,7 @@
   "name": "my-app",
   "private": true,
   "dependencies": {
-    "@abp/aspnetcore.mvc.ui.theme.basic": "^3.1.2"
+    "@abp/aspnetcore.mvc.ui.theme.basic": "^3.1.2",
+    "bootstrap-table": "^1.18.0"
   }
 }
