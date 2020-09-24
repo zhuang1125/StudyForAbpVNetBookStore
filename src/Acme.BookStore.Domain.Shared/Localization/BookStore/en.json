@@ -42,6 +42,18 @@
     "Authors": "Authors",
     "AuthorDeletionConfirmationMessage": "Are you sure to delete the author '{0}'?",
     "BirthDate": "Birth date",
-    "NewAuthor": "New author"
+    "NewAuthor": "New author",
+    "Permission:Todo": "Todo",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete",
+    "Menu:Todo": "MenuTodo",
+    "Todo": "Todo",
+    "TodoContent": "TodoContent",
+    "TodoDueTime": "TodoDueTime",
+    "TodoIsDone": "TodoIsDone",
+    "CreateTodo": "CreateTodo",
+    "EditTodo": "EditTodo",
+    "TodoDeletionConfirmationMessage": "Are you sure to delete the todo {0}?"
   }
 }

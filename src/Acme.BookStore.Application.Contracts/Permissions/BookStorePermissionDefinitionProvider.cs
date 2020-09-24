@@ -1,4 +1,4 @@
-﻿using Acme.BookStore.Localization;
+using Acme.BookStore.Localization;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Localization;
 
@@ -31,6 +31,11 @@ namespace Acme.BookStore.Permissions
             organizationUnitsPermission.AddChild(BookStorePermissions.OrganizationUnits.Create, L("Permission:OrganizationUnits.Create"));
             organizationUnitsPermission.AddChild(BookStorePermissions.OrganizationUnits.Edit, L("Permission:OrganizationUnits.Edit"));
             organizationUnitsPermission.AddChild(BookStorePermissions.OrganizationUnits.Delete, L("Permission:OrganizationUnits.Delete"));
+
+            var todoPermission = bookStoreGroup.AddPermission(BookStorePermissions.Todo.Default, L("Permission:Todo"));
+            todoPermission.AddChild(BookStorePermissions.Todo.Create, L("Permission:Create"));
+            todoPermission.AddChild(BookStorePermissions.Todo.Update, L("Permission:Update"));
+            todoPermission.AddChild(BookStorePermissions.Todo.Delete, L("Permission:Delete"));
         }
 
         private static LocalizableString L(string name)

@@ -1,4 +1,5 @@
-﻿using EasyAbp.FileManagement.EntityFrameworkCore;
+using Acme.BookStore.Todos;
+using EasyAbp.FileManagement.EntityFrameworkCore;
 using EasyAbp.PrivateMessaging;
 using EasyAbp.PrivateMessaging.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,6 +48,7 @@ namespace Acme.BookStore.EntityFrameworkCore
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
                 options.AddDefaultRepositories(includeAllEntities: true);
+                options.AddRepository<Todo, TodoRepository>();
             });
 
             Configure<AbpDbContextOptions>(options =>

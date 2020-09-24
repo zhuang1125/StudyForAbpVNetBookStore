@@ -1,7 +1,9 @@
-﻿using Acme.BookStore.Authors;
+using Acme.BookStore.Authors;
 using Acme.BookStore.Books;
 using Acme.BookStore.OrganizationUnits;
 using AutoMapper;
+using Acme.BookStore.Todos.Dtos;
+using Acme.BookStore.Web.Pages.Todos.Todo.ViewModels;
 using Volo.Abp.AutoMapper;
 
 namespace Acme.BookStore.Web
@@ -34,6 +36,8 @@ namespace Acme.BookStore.Web
 
             CreateMap<OrganizationUnitDto, Pages.OrganizationUnits.EditModalModel.EditOrganizationUnitViewModel>();
             CreateMap<Pages.OrganizationUnits.EditModalModel.EditOrganizationUnitViewModel, CreateUpdateOrganizationUnitDto>();
+            CreateMap<TodoDto, CreateEditTodoViewModel>();
+            CreateMap<CreateEditTodoViewModel, CreateUpdateTodoDto>();
         }
     }
 }

@@ -1,8 +1,21 @@
-﻿{
+{
   "culture": "tr",
   "texts": {
     "Menu:Home": "Ana sayfa",
     "Welcome": "Hoşgeldiniz",
-    "LongWelcomeMessage": "Uygulamaya hoşgeldiniz. Bu, ABP framework'ü üzerine bina edilmiş bir başlangıç projesidir. Daha fazla bilgi için abp.io adresini ziyaret edebilirsiniz."
+    "LongWelcomeMessage": "Uygulamaya hoşgeldiniz. Bu, ABP framework'ü üzerine bina edilmiş bir başlangıç projesidir. Daha fazla bilgi için abp.io adresini ziyaret edebilirsiniz.",
+    "Permission:Todo": "Todo",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete",
+    "Menu:Todo": "MenuTodo",
+    "Todo": "Todo",
+    "TodoContent": "TodoContent",
+    "TodoDueTime": "TodoDueTime",
+    "TodoIsDone": "TodoIsDone",
+    "CreateTodo": "CreateTodo",
+    "EditTodo": "EditTodo",
+    "TodoDeletionConfirmationMessage": "Are you sure to delete the todo {0}?",
+    "SuccessfullyDeleted": "Successfully deleted"
   }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Acme.BookStore.Users;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
@@ -9,6 +9,7 @@ using Acme.BookStore.Books;
 using Acme.BookStore.Authors;
 using EasyAbp.PrivateMessaging.EntityFrameworkCore;
 using EasyAbp.FileManagement.EntityFrameworkCore;
+using Acme.BookStore.Todos;
 
 namespace Acme.BookStore.EntityFrameworkCore
 {
@@ -33,6 +34,7 @@ namespace Acme.BookStore.EntityFrameworkCore
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
 
+        public DbSet<Todo> Todos { get; set; }
 
         public BookStoreDbContext(DbContextOptions<BookStoreDbContext> options)
             : base(options)

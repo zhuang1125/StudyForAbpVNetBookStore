@@ -1,7 +1,9 @@
-﻿using Acme.BookStore.Authors;
+using Acme.BookStore.Authors;
 using Acme.BookStore.Books;
 using Acme.BookStore.OrganizationUnits;
 using AutoMapper;
+using Acme.BookStore.Todos;
+using Acme.BookStore.Todos.Dtos;
 using Volo.Abp.Identity;
 
 namespace Acme.BookStore
@@ -23,6 +25,8 @@ namespace Acme.BookStore
             CreateMap<OrganizationUnit, OrganizationUnitDto>();
             CreateMap<CreateUpdateOrganizationUnitDto, OrganizationUnit>().MapExtraProperties();
             CreateMap<OrganizationUnitDto, CreateUpdateOrganizationUnitDto>().MapExtraProperties();
+            CreateMap<Todo, TodoDto>();
+            CreateMap<CreateUpdateTodoDto, Todo>(MemberList.Source);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Acme.BookStore.Localization;
@@ -66,6 +66,12 @@ namespace Acme.BookStore.Web.Menus
                     l["Menu:OrganizationUnits"],
                     url: "/OrganizationUnits"
                 ));
+            }
+            if (await context.IsGrantedAsync(BookStorePermissions.Todo.Default))
+            {
+                context.Menu.AddItem(
+                    new ApplicationMenuItem(BookStoreMenus.Todo, l["Menu:Todo"], "/Todos/Todo")
+                );
             }
         }
     }
